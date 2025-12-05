@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Route Planner - Bern (Prototype)</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Leaflet CSS for OpenStreetMap -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">ÖV plus - Bern (Prototype)</div>
+    <div class="actions">
+      <button class="btn icon" aria-label="Settings">⚙️</button>
+    </div>
+  </div>
+
+  <main class="container">
+    <section class="search-card">
+      <form id="plannerForm" novalidate>
+        <div class="row">
+          <label for="from">Start address</label>
+          <div class="input-with-pin">
+            <input id="from" name="from" placeholder="Start address or click pin" autocomplete="off" />
+            <button id="pinStart" type="button" class="pin-btn" title="Pick on map">📍</button>
+          </div>
+        </div>
+        <div class="row">
+          <label for="to">Destination address</label>
+          <div class="input-with-pin">
+            <input id="to" name="to" placeholder="Destination address or click pin" autocomplete="off" />
+            <button id="pinDest" type="button" class="pin-btn" title="Pick on map">📍</button>
+          </div>
+        </div>
+
+        <div class="modes" role="group" aria-label="Travel modes">
+          <label class="mode-checkbox active">
+            <input type="checkbox" name="mode" value="public_transport" checked />
+            <span class="mode-label">Public Transport</span>
+          </label>
+          <label class="mode-checkbox">
+            <input type="checkbox" name="mode" value="e_scooter" />
+            <span class="mode-label">E-Scooter</span>
+          </label>
+          <label class="mode-checkbox">
+            <input type="checkbox" name="mode" value="publibike" />
+            <span class="mode-label">PubliBike</span>
+          </label>
+        </div>
+
+        <div class="controls">
+          <button id="swap" type="button" aria-label="Swap start and destination">Swap</button>
+          <button id="plan" class="primary" type="submit">Plan</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Interactive Map -->
+    <section class="map-card">
+      <div class="map-header">
+        <span>Map</span>
+        <span id="mapInstructions" class="map-instructions">Click pin buttons or click map to set locations</span>
+      </div>
+      <div id="map"></div>
+    </section>
+
+    <section class="results-card">
+      <div class="results-header">Results</div>
+      <div id="results" class="results-list">
+        <!-- placeholder route cards -->
+        <div class="route-placeholder">Enter origin and destination, then click Plan.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">Bern area — prototype UI only</footer>
+
+  <!-- Leaflet JS for OpenStreetMap -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+          crossorigin=""></script>
+  <script src="app.js"></script>
+</body>
+</html>
