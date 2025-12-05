@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  otp:
+    image: opentripplanner/opentripplanner:2.5.0
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./otp/graphs/bern:/var/opentripplanner
+    command: --build --serve
+    environment:
+      - JAVA_OPTS=-Xmx8G

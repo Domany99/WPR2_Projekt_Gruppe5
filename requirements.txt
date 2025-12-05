@@ -1,0 +1,9 @@
+# Web Framework
+Flask==2.3.2
+
+# HTTP Requests (für Geocoding, PubliBike API, E-Scooter API, OTP)
+requests==2.32.3
+
+# Optional: Werkzeug (wird automatisch mit Flask installiert, aber explizit für Sicherheit)
+Werkzeug>=2.3.6
+
